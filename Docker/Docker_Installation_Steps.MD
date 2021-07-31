@@ -39,7 +39,7 @@ systemctl enable docker
 useradd dockeradmin
 echo dockeradmin | passwd dockeradmin --stdin
 usermod -aG docker dockeradmin
-usermod -aG docker ec2-user    #this line is not required. just adding it as I may want to run docker command with my ec2-user
+usermod -aG docker ec2-user    #this line is not required. just adding it as I may want to run docker commands with my ec2-user
 echo "docker_host" > /etc/hostname
 PRIVATE_IP=$(hostname -I | awk '{print $1}')
 echo "$PRIVATE_IP docker_host" >> /etc/hosts
