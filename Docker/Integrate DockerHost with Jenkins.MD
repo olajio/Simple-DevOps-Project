@@ -15,3 +15,7 @@ Click `Advanced` button. To enter the passowrd, check the `Use password authenti
 
 
 ##### Note: If the connection failed, it may be because EC2 in blocks password authentication by default. To address this, edit the `/etc/ssh/sshd_config` file and look for the `PasswordAuthentication` line to enable password authentication as follows: `PasswordAuthentication yes`. Then restart SSH service: `systemctl restart sshd`
+
+
+
+Next: [Jenkins job to copy artifacts to DockerHost](https://github.com/olajio/Simple-DevOps-Project/blob/master/Docker/Jenkins%20job%20to%20copy%20artifacts%20to%20DockerHost.MD)
