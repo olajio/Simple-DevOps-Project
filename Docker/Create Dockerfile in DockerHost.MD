@@ -27,3 +27,5 @@ docker run -d --name devops-container -p 8080:8080 devops-project
 ```
 http://PUBLIC_IP:8080/webapp/
 ```
+
+Next: [Deploy .war file on Docker container using Jenkins.MD](https://github.com/olajio/Simple-DevOps-Project/blob/master/Docker/Deploy%20%60.war%60%20file%20on%20Docker%20container%20using%20Jenkins.MD)
