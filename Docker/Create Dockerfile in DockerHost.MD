@@ -1,4 +1,4 @@
-Prereq: [Integrate DockerHost with Jenkins](https://github.com/olajio/Simple-DevOps-Project/blob/master/Docker/Jenkins%20job%20to%20copy%20artifacts%20to%20DockerHost.MD)
+Prereq: [Jenkins job to copy artifacts to DockerHost](https://github.com/olajio/Simple-DevOps-Project/blob/master/Docker/Jenkins%20job%20to%20copy%20artifacts%20to%20DockerHost.MD)
 # Create Dockerfile in DockerHost
 
 #### Create Dockerfile as follows at the home directory of the dockeradmin user
