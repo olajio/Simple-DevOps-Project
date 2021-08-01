@@ -1,3 +1,5 @@
+Prereq: [Integrate DockerHost with Jenkins](https://github.com/olajio/Simple-DevOps-Project/blob/master/Docker/Integrate%20DockerHost%20with%20Jenkins.MD)
+
 # To deploy application to to docker with jenkins, we will be using the following architecture, where Git server as the source, Jenkins for CI/CD and we will deploy the code to a DockerHost
 
 ![Screen Shot 2021-07-31 at 8 05 19 PM](https://user-images.githubusercontent.com/34173234/127756050-6b876fda-892b-4020-a235-c9417182a352.png)
