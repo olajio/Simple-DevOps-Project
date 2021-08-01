@@ -1,3 +1,5 @@
+Prereq: [Docker_Installation_Steps.MD](https://github.com/olajio/Simple-DevOps-Project/blob/master/Docker/Docker_Installation_Steps.MD)
+
 # Integrate DockerHost with Jenkins
 
 To integrate DockerHost to Jenkins, you would install `Publish over SSH` plugin as follows:
