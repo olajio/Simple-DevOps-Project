@@ -92,3 +92,7 @@ Please follow below steps to install docker CE on CentoOS server instance. For R
    ```sh
    sudo docker run hello-world
    ```
+
+
+
+Next: [Integrate DockerHost with Jenkins](https://github.com/olajio/Simple-DevOps-Project/blob/master/Docker/Integrate%20DockerHost%20with%20Jenkins.MD)
