@@ -36,17 +36,6 @@ Ansible is an open-source automation platform. It is very, very simple to set up
    sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
    systemctl restart sshd
    ```
-1. Log in as a ansadmin user on master and generate ssh key (on Control node)
-   ```sh 
-   sudo su - ansadmin
-   ssh-keygen
-   ```
-1. From ansible control host, copy keys onto all ansible managed hosts (on Control node)
-   ```sh 
-   ssh-copy-id ansadmin@<target-server>
-   ```
-   In the specific case, we copy the keys onto the Ansible host
-
 1. Ansible server used to create images and store on docker registry. Hence install docker, start docker services and add ansadmin to the docker group. 
    ```sh
    yum install docker -y
@@ -66,6 +55,47 @@ Ansible is an open-source automation platform. It is very, very simple to set up
    echo "docker_host" >> /etc/ansible/hosts
    echo "localhost" >> /etc/ansible/hosts 
    ```
+### Alternative Ansible Installation, using EC2 user data
+Alternatively, you can perform steps 1 through 7 using ec2 user data during creating of the EC2 instance. The script for the EC2 user data would be as folllows:
+
+```
+#!/bin/bash
+yum install python -y
+yum install python-pip -y
+pip install ansible
+mkdir /etc/ansible
+useradd ansadmin
+echo ansadmin | passwd ansadmin --stdin
+echo "ansadmin ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+systemctl restart sshd
+yum install docker -y
+systemctl start docker
+systemctl enable docker
+usermod -aG docker ansadmin
+mkdir /etc/ansible
+touch /etc/ansible/hosts
+echo "docker_host" >> /etc/ansible/hosts
+echo "localhost" >> /etc/ansible/hosts
+echo "ansible_control" > /etc/hostname
+PRIVATE_IP=$(hostname -I | awk '{print $1}')
+echo "$PRIVATE_IP ansible_control" >> /etc/hosts
+echo "PRIVATE_IP_OF_DOCKER_HOST docker_host" >> /etc/hosts    #ENSURE TO RETRIEVE THE IP ADDRESS OF THE docker_host IN YOUR ENVIRONMENT
+echo "PRIVATE_IP_OF_JENKINS_HOST jenkins" >> /etc/hosts        #ENSURE TO RETRIEVE THE IP ADDRESS OF THE jenkins IN YOUR ENVIRONMENT
+reboot
+```
+Then you can continue steps 8 and 9 below manually after the EC2 instance has been created.
+
+8. Log in as a ansadmin user on master and generate ssh key (on Control node)
+    ```sh 
+    sudo su - ansadmin
+    ssh-keygen
+    ``` 
+9. From ansible control host, copy keys onto all ansible managed hosts (on Control node)
+   ```sh 
+   ssh-copy-id ansadmin@<target-server>
+   ```
+   In the specific case, we copy the keys onto the Docker host
    
    
 ### Validation test
