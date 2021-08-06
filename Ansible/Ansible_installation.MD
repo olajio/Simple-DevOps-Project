@@ -109,7 +109,7 @@ Then you can continue steps 8 and 9 below manually after the EC2 instance has be
 
   ### Additional note
  You may see and output similar to the following. Primarily showing that the ansible controller can reach its target hosts:
-***
+---
 [DEPRECATION WARNING]: Ansible will require Python 3.8 or newer on the
 controller starting with Ansible 2.12. Current version: 2.7.18 (default, Jun 10
  2021, 00:11:02) [GCC 7.3.1 20180712 (Red Hat 7.3.1-13)]. This feature will be
@@ -120,6 +120,7 @@ interpreter at /usr/bin/python, but future installation of another Python
 interpreter could change the meaning of that path. See https://docs.ansible.com
 /ansible/2.11/reference_appendices/interpreter_discovery.html for more
 information.
+```
 localhost | SUCCESS => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python"
@@ -127,13 +128,13 @@ localhost | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }
-
-
+```
 [WARNING]: Platform linux on host docker_host is using the discovered Python
 interpreter at /usr/bin/python, but future installation of another Python
 interpreter could change the meaning of that path. See https://docs.ansible.com
 /ansible/2.11/reference_appendices/interpreter_discovery.html for more
 information.
+```
 docker_host | SUCCESS => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python"
@@ -141,4 +142,5 @@ docker_host | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }
-***
+```
+---
