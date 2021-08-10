@@ -3,7 +3,7 @@ Prereq: [Jenkins job to copy artifacts to DockerHost](https://github.com/olajio/
 
 #### Create Dockerfile as follows at the home directory of the dockeradmin user
 ```
-FROM tomcat:8.0
+FROM tomcat
 
 MAINTAINER O Olajide
 
