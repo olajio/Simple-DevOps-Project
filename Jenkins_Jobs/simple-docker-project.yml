@@ -6,24 +6,25 @@
     command: docker stop simple-devops-container
     ignore_errors: yes
 
-  - name: remove stopped docker container
+  - name: remove stopped docker container, ignore error message if there is no container to stop
     command: docker rm simple-devops-container
     ignore_errors: yes
 
   - name: remove current docker image
-    command: docker rmi simple-devops-image
+    command: docker rmi olajide85/simple-devops-image:latest
     ignore_errors: yes
 #    register: result
 #    failed_when:
 #      - result.rc == 0
 #      - '"docker" not in result.stdout'
 
+  - name: pull docker image from dockerhub
+    command: docker pull olajide85/simple-devops-image:latest
 
-  - name: building docker image
-    command: docker build -t simple-devops-image .
-    args:
-      chdir: /opt/docker
+#  - name: building docker image usinf war file
+#    command: docker build -t simple-devops-image .
+#    args:
+#      chdir: /opt/docker
 
   - name: creating docker image
-    command: docker run -d --name simple-devops-container -p 8080:8080 simple-devops-image
-
+    command: docker run -d --name simple-devops-container -p 8080:8080 olajide85/simple-devops-image:latest
