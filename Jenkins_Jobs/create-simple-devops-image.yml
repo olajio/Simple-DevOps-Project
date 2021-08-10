@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  become: true
+  become_user: root
   tasks:
   - name: create docker image using war file
     command: docker build -t simple-devops-image:latest .
